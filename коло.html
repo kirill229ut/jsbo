@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+<body>
+    <button onclick="Buty()">Draw</button>
+<canvas id="myCanvas" width="600" height="600"
+style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+<script>
+let c = document.getElementById("myCanvas");
+let cxt = c.getContext("2d");
+function Buty(){
+let canvas = document.getElementById("myCanvas");
+let context = canvas.getContext("2d");                            
+let x = canvas.width / 2;                                         
+let  y = canvas.height / 2;                                        
+let radius = 75;                                                  
+let startAngle = 0 * Math.PI;                                   
+let endAngle = 2 * Math.PI;                                     
+let counterClockwise = true;  
+context.lineWidth = 10;
+for(let i=0;i<100;i++){ 
+    let radius = Math.random()*75;
+    let x =Math.floor( Math.random()*canvas.width)                                         
+let  y = Math.floor( Math.random()*canvas.height);                                                                           
+context.beginPath();                                              
+context.arc(x, y, radius, startAngle, endAngle, counterClockwise);
+context.strokeStyle = "red";                                    
+context.stroke();
+}}
+ </script>
+</body>
+</html>

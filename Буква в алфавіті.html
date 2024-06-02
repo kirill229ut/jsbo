@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Номер букви в алфавіті</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poetsen One';
+            text-align: center;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+/* CSS */
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+    </style>
+</head>
+<body>
+    <h1>Введіть українську букву</h1>
+    <input type="text" id="letterInput" maxlength="1" placeholder="Ваша буква">
+    <button class="button-74" onclick="findLetterPosition()">Знайти номер букви</button>
+    <button class="button-74" onclick="ClearInputs()">Очистити</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        function findLetterPosition() {
+            const letter = document.getElementById('letterInput').value;
+            const result = document.getElementById('result');
+            result.innerHTML = ''; 
+
+            if (letter.length === 1) {
+                let alphabetUkr = 'абвгґдеєжзиіїйклмнопрстуфхцчшщьюя';
+                let lowerLetter = letter.toLowerCase();
+                let position = alphabetUkr.indexOf(lowerLetter) + 1;
+
+                if (position > 0) {
+                    result.innerHTML = `Буква "${letter}" має номер ${position} в українському алфавіті.`;
+                } else {
+                    result.innerHTML = 'Будь ласка, введіть коректну українську букву.';
+                }
+            } else {
+                result.innerHTML = 'Будь ласка, введіть одну букву.';
+            }
+        }
+        function ClearInputs(){
+            document.getElementById('letterInput').value='';
+        }
+    </script>
+</body>
+</html>
+

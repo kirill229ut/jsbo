@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Обчислення площі трикутника</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Обчислення площі трикутника</h1>
+    <style>
+        body{
+            background-color: aquamarine;
+            font-family: "Vollkorn", serif;
+        }
+/* CSS */
+.button-29 {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-29:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.button-29:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-29:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+.size{
+    width: 180px;
+    height: 30px;
+}
+    </style>
+    <form id="triangleForm">
+        <label for="sideA">Сторона a:</label>
+        <input class="size" type="number" id="sideA" placeholder="Введіть сторону трикутника" required><br><br>
+        <label for="sideB">Сторона b:</label>
+        <input class="size" type="number" id="sideB" placeholder="Введіть сторону трикутника" required><br><br>
+        <label for="sideC">Сторона c:</label>
+        <input class="size" type="number" id="sideC" placeholder="Введіть сторону трикутника" required><br><br>
+        <button type="button" class="button-29" onclick="calculateArea()">Обчислити площу</button>
+        <button type="button" class="button-29" onclick="clearInputs()">Очистити</button>
+    </form>
+    <h2>Площа трикутника: <span id="result"></span></h2>
+
+    <script>
+        function calculateArea() {
+            let a = parseFloat(document.getElementById('sideA').value);
+            let b = parseFloat(document.getElementById('sideB').value);
+            let c = parseFloat(document.getElementById('sideC').value);
+
+            if (a + b > c && a + c > b && b + c > a) {
+                const p = (a + b + c) / 2;
+
+                const area = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+
+                document.getElementById('result').innerText = area.toFixed(2);
+            } else {
+                document.getElementById('result').innerText = 'Такого трикутника не існує!!';
+            }
+        }
+        function clearInputs(){
+            document.getElementById('sideB').value='';
+            document.getElementById('sideA').value='';
+            document.getElementById('sideC').value='';
+        }
+    </script>
+</body>
+</html>

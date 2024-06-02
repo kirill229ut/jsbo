@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шахівниця</title>
+</head>
+<body>
+
+    <canvas id="chess" width="600" height="600" style="border:5px solid #000000;">Ваш браузер не підтримує </canvas>
+
+<script>
+
+    let rect = document.getElementById("chess").getContext("2d");
+    rect.fillRect(0, 0, 600, 600);
+
+    for(let y = 0; y < 8; y++) {
+        for(let x = 0; x < 8; x++) {
+            if ((y + x) % 2 != 0) {
+                rect.clearRect(75 * x , 75 * y, 75, 75)
+            }
+        }
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вікторина</title>
+    <link rel="stylesheet" href="css/перший політ людини в космос.css">
+</head>
+<body> 
+    <h1>В якому році людина вперше полетіла в космос? (Просто число)</h1>
+    <input type="number" id="yearInput" class="klp">
+    <button class="button-65" role="button" onclick="ClearInput()">очистити</button>
+    <button class="button-65" onclick="Dek()" role="button">перевірити</button> 
+    <script>
+        function Dek() {
+            let year = parseInt(document.getElementById('yearInput').value); 
+
+            if (year === 1961) { 
+                alert("Правильно!");
+            } else {
+                alert("Неправильно.");
+            }
+        }
+        function ClearInput(){
+            document.getElementById('yearInput').value='';
+        }
+    </script>
+</body>
+</html>

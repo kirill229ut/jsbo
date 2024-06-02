@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Обчислення площі прямокутника</title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<body>
+    <h1>Обчислення площі прямокутника</h1>
+    <form id="rectangleForm">
+        <label for="width">Ширина (a):</label>
+        <input type="number" id="width" required><br><br>
+        <label for="height">Висота (b):</label>
+        <input type="number" id="height" required><br><br>
+        <button type="button" class="button-3" onclick="calculateArea()">Обчислити площу</button>
+        <button type="button" class="button-3" onclick="ClearInputs()">Очистити</button>
+    </form>
+    <h2>Площа прямокутника: <span id="result"></span></h2>
+<style>
+
+/* CSS */
+.button-3 {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-3:hover {
+  background-color: #2c974b;
+}
+
+.button-3:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-3:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.button-3:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+body{
+    font-family: "Ubuntu", sans-serif;
+}
+</style>
+    <script>
+        function calculateArea() {
+            const width = parseFloat(document.getElementById('width').value);
+            const height = parseFloat(document.getElementById('height').value);
+
+            if (width > 0 && height > 0) {
+
+                const area = width * height;
+                document.getElementById('result').innerText = area.toFixed(2);
+            } else {
+
+                document.getElementById('result').innerText = 'Введіть правильні значення сторін';
+            }
+        }
+        function ClearInputs(){
+            document.getElementById('width').value='';
+            document.getElementById('height').value='';
+        }
+    </script>
+</body>
+</html>

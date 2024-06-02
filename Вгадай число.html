@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вгадай число</title>
+<link rel="stylesheet" href="css/Вгадай число.css">
+</head>
+<body>
+    <h1>Вгадай число від 1 до 100</h1>
+    <input type="number" id="guess" placeholder="Введіть число">
+    <button class="button-74" role="button" onclick="checkGuess()">Перевірити</button>
+    <p class="tfj" id="message"></p>
+    <button class="button-74" role="button" onclick="ClearInput()">Очистити</button>
+
+    <script>
+        var minNumber = 1;
+        var maxNumber = 100;
+        var randomNumber = generateRandomNumber(minNumber, maxNumber);
+
+        function generateRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function checkGuess() {
+            var guess = parseInt(document.getElementById('guess').value);
+            var messageElement = document.getElementById('message');
+
+            if (isNaN(guess) || guess < minNumber || guess > maxNumber) {
+                messageElement.textContent = "Будь ласка, введіть число від " + minNumber + " до " + maxNumber;
+            } else {
+                if (guess === randomNumber) {
+                    messageElement.textContent = "Вітаємо! Ви вгадали число!";
+                } else if (guess < randomNumber) {
+                    messageElement.textContent = "Спробуйте більше число";
+                } else {
+                    messageElement.textContent = "Спробуйте менше число";
+                }
+            }
+        }
+        function ClearInput(){
+            document.getElementById('guess').value='';
+        }
+    </script>
+</body>
+</html>

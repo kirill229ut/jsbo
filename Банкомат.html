@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Банкомат</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 50px;
+            font-family: "IBM Plex Mono", monospace;
+        }
+        #atm {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            max-width: 400px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 10px;
+        }
+/* CSS */
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+    </style>
+</head>
+<body>
+    <div id="atm">
+        <h1>Банкомат</h1>
+        <div id="menu">
+            <button class="button-74" onclick="showBalance()">Перевірити баланс</button>
+            <button class="button-74" onclick="showDeposit()">Внести кошти</button>
+            <button class="button-74" onclick="showWithdraw()">Зняти кошти</button>
+        </div>
+        <div id="actions" style="display:none;">
+            <input type="number" id="amount" placeholder="Введіть суму">
+            <button id="confirmButton" class="button-74" onclick="confirmAction()">Підтвердити</button>
+            <button class="button-74" onclick="cancelAction()">Відміна</button>
+        </div>
+        <h2 id="result"></h2>
+    </div>
+
+    <script>
+        let balance = 1000; 
+        let currentAction = '';
+
+        function showBalance() {
+            document.getElementById('result').innerText = `Ваш баланс: ${balance} грн`;
+        }
+
+        function showDeposit() {
+            currentAction = 'deposit';
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('actions').style.display = 'block';
+            document.getElementById('result').innerText = ''; 
+        }
+
+        function showWithdraw() {
+            currentAction = 'withdraw';
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('actions').style.display = 'block';
+            document.getElementById('result').innerText = '';
+        }
+
+        function confirmAction() {
+            const amount = parseFloat(document.getElementById('amount').value);
+
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById('result').innerText = 'Будь ласка, введіть коректну суму';
+                return;
+            }
+
+            if (currentAction === 'deposit') {
+                balance += amount;
+                document.getElementById('result').innerText = `Ви внесли ${amount} грн. Новий баланс: ${balance} грн`;
+            } else if (currentAction === 'withdraw') {
+                if (amount > balance) {
+                    document.getElementById('result').innerText = 'Недостатньо коштів на рахунку';
+                } else {
+                    balance -= amount;
+                    document.getElementById('result').innerText = `Ви зняли ${amount} грн. Новий баланс: ${balance} грн`;
+                }
+            }
+
+            document.getElementById('amount').value = '';
+            document.getElementById('actions').style.display = 'none';
+            document.getElementById('menu').style.display = 'block';
+        }
+
+        function cancelAction() {
+            document.getElementById('actions').style.display = 'none';
+            document.getElementById('menu').style.display = 'block';
+            document.getElementById('amount').value = '';
+            document.getElementById('result').innerText = '';
+        }
+    </script>
+</body>
+</html>

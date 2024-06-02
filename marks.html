@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оцінки</title>
+    <link rel="stylesheet" href="" >
+</head>
+<body>
+    <input id="mark" class="marko" type="number">
+    <!-- HTML !-->
+<button class="button-70" onclick="Deut()" role="button">Ввести</button>    
+<button class="button-70" onclick="inputReset()" role="button">Скинути</button>
+
+
+    <h1>Яка в тебе сьогодні оцінка?</h1>
+    <script>
+function Deut() {
+    let mark = parseFloat(document.getElementById('mark').value); 
+
+    if (isNaN(mark)) { 
+        alert("Будь ласка, введіть свою оцінку");
+    } else {
+        if (mark > 9) {
+            alert("Ти вчишся на високому рівні!");
+        } else {
+            alert("Ти вчишся погано!");
+        }
+    }
+}
+        function inputReset(){
+            document.getElementById('mark').value = '';
+        }
+    </script>
+</body>
+</html>
